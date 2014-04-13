@@ -57,3 +57,8 @@ WebWorkWrap will help you by adding a callback function to the task, that will f
         console.log(event, data)
     });
     ```
+4. Terminate the worker:
+    
+    ```
+    myWorker.terminate();
+    ```
