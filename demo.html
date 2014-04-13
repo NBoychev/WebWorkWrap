@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>WebWorkWrap</title>
+	<script src="src/WebWorkWrap.js"></script>
+</head>
+<body>
+	<script>
+		var myWorker = new WebWorkWrap('src/workers/worker.js');
+
+		myWorker.setOptions({
+			option: 'value'
+		});
+
+		myWorker.doTask({
+			testKey: 'testValue'
+
+		}, function(event, data){
+			console.log(event, data)
+		});
+
+
+	</script>
+</body>
+</html>
