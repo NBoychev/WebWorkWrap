@@ -10,11 +10,11 @@
 
 	/**
 	 * Class for managing HTML5 Webworkers
-	 * 
+	 *
 	 * @param {String} workerpath
 	 */
 	function WebWorkWrap(workerpath) {
-		
+
 		this.workerpath = workerpath;
 
 		this.worker = new Worker(workerpath);
@@ -41,7 +41,7 @@
 
 	/**
 	 * Handles messages from the worker
-	 * 
+	 *
 	 * @param  {Object} event
 	 * @api private
 	 */
@@ -54,7 +54,7 @@
 
 	/**
 	 * Fires the callback function of the task
-	 * 
+	 *
 	 * @param  {String} id
 	 * @param  {Object} event
 	 * @param  {Any} data
@@ -62,6 +62,7 @@
 	 */
 	proto._fireCallback = function(id, event, data) {
 		var task = this._getTaskById(id);
+    if (task === undefined) { return; }
 
 		if(task.callback) {
 			task.callback(event, data);
@@ -72,7 +73,7 @@
 
 	/**
 	 * Removes task from the collection
-	 * 
+	 *
 	 * @param  {Object} task
 	 * @api private
 	 */
@@ -82,7 +83,7 @@
 
 	/**
 	 * Creates task and adds it to the collection
-	 * 
+	 *
 	 * @param  {Function} callback
 	 * @return {Object}
 	 * @api private
@@ -100,7 +101,7 @@
 
 	/**
 	 * Gets task from the collection, by id
-	 * 
+	 *
 	 * @param  {String} id
 	 * @return {Object}
 	 * @api private
@@ -115,7 +116,7 @@
 
 	/**
 	 * Generates random id
-	 * 
+	 *
 	 * @param  {String|Number} prefix
 	 * @return {String}
 	 * @api private
@@ -127,7 +128,7 @@
 
 	/**
 	 * Sets the options of the web worker
-	 * 
+	 *
 	 * @param {Object} opts
 	 */
 	proto.setOptions = function(opts) {
@@ -138,7 +139,7 @@
 
 	/**
 	 * Send task to the worker
-	 * 
+	 *
 	 * @param  {Object}   taskData
 	 * @param  {Function} callback
 	 */
@@ -152,7 +153,7 @@
 
 	/**
 	 * Stop the worker
-	 * 
+	 *
 	 */
 	proto.terminate = function() {
 		this.worker.terminate();
